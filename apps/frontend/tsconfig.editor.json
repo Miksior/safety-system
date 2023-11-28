@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts", "../shared/site.types.ts"],
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  }
+}

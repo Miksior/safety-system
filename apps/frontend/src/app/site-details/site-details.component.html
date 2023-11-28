@@ -1,0 +1,24 @@
+<div class="container my-4">
+  <button [routerLink]="['../']" class="btn btn-light mb-4">&larr; Back</button>
+  <h1>Site details</h1>
+  <div class="row" *ngIf="siteDetails$ | async as siteDetails; else loading">
+    <div *ngFor="let site of siteDetails" class="col-md-4">
+      <div class="card my-2">
+        <div class="card-body">
+          <h1 class="card-title">{{ site.systemName }}</h1>
+          <ng-container *ngIf="site.lastActiveAlarmDate; else neverAlarm">
+            <p class="card-text">Last active alarm date: {{ site.lastActiveAlarmDate | date:'short' }}</p>
+          </ng-container>
+          <ng-template #neverAlarm>
+            <p class="card-text">Last active alarm date: never</p>
+          </ng-template>
+          <p class="card-text">Number of active alarms: {{ site.numberOfActiveAlarms }}</p>
+          <a [routerLink]="['./' + systemUrl + '/' + site.systemDetailsLink]" class="btn btn-primary">Show alarms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div>Loading...</div>
+  </ng-template>
+</div>

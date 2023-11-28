@@ -1,0 +1,20 @@
+<div class="container my-4">
+  <h1>My sites</h1>
+  <div *ngIf="(sites$ | async) as sites; else loading">
+    <div class="row">
+      <div *ngFor="let site of sites" class="col-md-4">
+        <div class="card my-2">
+          <div class="card-body">
+            <h5 class="card-title">{{ site.siteName }}</h5>
+            <p class="card-text">Number of Users: {{ site.numberOfUsers }}</p>
+            <p class="card-text">Active Alarms: {{ site.numberOfActiveAlarms }}</p>
+            <button [routerLink]="[site.systemDetailsLink]" class="btn btn-primary">Go to site</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div>Loading...</div>
+  </ng-template>
+</div>

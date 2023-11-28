@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+  # Tutaj miała być obsługa całości projektu w kontenerach ale się nie wyrobiłem :(
+  # frontend:
+  #   extends:
+  #     file: docker-compose.base.yml
+  #     service: nx-app-base
+  #   # command: npm run frontend
+  #   command: npx nx run frontend:serve:development --host=0.0.0.0
+  #   # command: pwd
+  #   expose:
+  #     - 4200
+  #   ports:
+  #     - 4200:4200
+
+  # backend:
+  #   extends:
+  #     file: docker-compose.base.yml
+  #     service: nx-app-base
+  #   # command: npm run backend
+  #   command: npx nx run backend:serve:development --host=0.0.0.0
+  #   expose:
+  #     - 3000
+  #   ports:
+  #     - 3000:3000 # API Entry port
+  #     # - 4311:4311 # Server Debugging port
+
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - 5432
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: master
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - /usr/src/app/init.sql:/docker-entrypoint-initdb.d/
+
+volumes:
+  mono-node-modules: null
+  postgres_data: null
+
