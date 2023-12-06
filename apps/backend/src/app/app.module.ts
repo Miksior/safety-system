@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { Sequelize } from 'sequelize-typescript';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
@@ -16,8 +15,6 @@ import { SystemdetailsService } from './systemdetails/systemdetails.service';
 import { SystemdetailsController } from './systemdetails/systemdetails.controller';
 import { AuthModule } from './auth/auth.module';
 import { AuthController } from './auth/auth.controller';
-import { APP_GUARD } from '@nestjs/core';
-import { JwtAuthGuard } from './auth/jwt.guard';
 
 const MODELS = [Sites, Systems, Users, UsersSites, Alarms];
 

@@ -1,5 +1,4 @@
-import { Model, Table, Column, DataType, Index, Sequelize, ForeignKey, HasMany, BelongsTo, PrimaryKey } from "sequelize-typescript";
-import { Alarms } from "./alarms";
+import { Model, Table, Column, DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
 import { Sites } from "./sites";
 
 @Table({ tableName: "systems", timestamps: false })

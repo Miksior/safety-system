@@ -2,22 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Sites } from '../../entities/sites';
 import { Systems } from '../../entities/systems';
-import { Users } from '../../entities/users';
-import { UsersSites } from '../../entities/usersSites';
 import { Alarms } from '../../entities/alarms';
-import { environment } from '../../../../shared/environment/environment';
 
 @Injectable()
 export class SitedetailsService {
  constructor(
  @InjectModel(Sites)
  private sitesModel: typeof Sites,
- @InjectModel(Systems)
- private systemsModel: typeof Systems,
- @InjectModel(Users)
- private usersModel: typeof Users,
- @InjectModel(UsersSites)
- private usersSitesModel: typeof UsersSites,
  @InjectModel(Alarms)
  private alarmsModel: typeof Alarms,
  ) {}

@@ -2,10 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Sites } from '../../entities/sites';
 import { Systems } from '../../entities/systems';
-import { Users } from '../../entities/users';
 import { UsersSites } from '../../entities/usersSites';
 import { Alarms } from '../../entities/alarms';
-import { environment } from '../../../../shared/environment/environment';
 
 @Injectable()
 export class SitesService {
@@ -14,8 +12,6 @@ export class SitesService {
   private sitesModel: typeof Sites,
   @InjectModel(Systems)
   private systemsModel: typeof Systems,
-  @InjectModel(Users)
-  private usersModel: typeof Users,
   @InjectModel(UsersSites)
   private usersSitesModel: typeof UsersSites,
   @InjectModel(Alarms)
@@ -29,7 +25,6 @@ export class SitesService {
     const site = await this.sitesModel.findByPk(userSite.site_id);
 
     if (!site) {
-      // Handle the case where the site doesn't exist
       return null;
     }
 
@@ -47,7 +42,6 @@ export class SitesService {
     };
   }));
 
-  // Filter out null values if any sites were not found
   const filteredSiteInfo = siteInfo.filter(site => site !== null);
 
   return filteredSiteInfo;
