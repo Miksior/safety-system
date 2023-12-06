@@ -44,7 +44,6 @@ const MODELS = [Sites, Systems, Users, UsersSites, Alarms];
     SitesService,
     SitedetailsService,
     SystemdetailsService,
-    // AuthService
   ],
   exports: [],
 })

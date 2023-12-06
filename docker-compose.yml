@@ -1,7 +1,7 @@
 version: '3.7'
+# Tutaj miała być obsługa całości projektu w kontenerach ale się nie wyrobiłem :(
 
-services:
-  # Tutaj miała być obsługa całości projektu w kontenerach ale się nie wyrobiłem :(
+# services:
   # frontend:
   #   extends:
   #     file: docker-compose.base.yml
@@ -26,23 +26,23 @@ services:
   #     - 3000:3000 # API Entry port
   #     # - 4311:4311 # Server Debugging port
 
-  postgres:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    expose:
-      - 5432
-    ports:
-      - '5432:5432'
-    environment:
-      POSTGRES_DB: database
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: master
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - /usr/src/app/init.sql:/docker-entrypoint-initdb.d/
+#   postgres:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     expose:
+#       - 5432
+#     ports:
+#       - '5432:5432'
+#     environment:
+#       POSTGRES_DB: database
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: master
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#       - /usr/src/app/init.sql:/docker-entrypoint-initdb.d/
 
-volumes:
-  mono-node-modules: null
-  postgres_data: null
+# volumes:
+#   mono-node-modules: null
+#   postgres_data: null
 
